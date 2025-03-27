@@ -30,8 +30,17 @@ public class PositiveNumbers {
     }
     
     public static List<Integer> positive(List<Integer> numbers){
-        List<Integer> posNumber = numbers.stream().filter(number -> number >0).collect(Collectors.toCollection(ArrayList::new));
+
+        //List<Integer> posNumber = numbers.stream().filter(number -> number >0).collect(Collectors.toCollection(ArrayList::new));
+        List<Integer> posNumber = numbers.stream().filter(number -> positiveNumber(number)).collect(Collectors.toCollection(ArrayList::new));
+
         return posNumber;
+    }
+    public static boolean positiveNumber(int num){
+        if(num > 0){
+            return true;
+        }
+        return false;
     }
 
 }
