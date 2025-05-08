@@ -21,24 +21,25 @@ public class Hand implements Comparable<Hand>{
         Collections.sort(this.cards);
     }
 
-    @Override
-    public int compareTo(Hand otherHand){
-        int valueThisHand = 0;
-        int valueOtherHand = 0;
-
-        for(Card card: this.cards){
-            valueThisHand += card.getValue();
-        }
-        for(Card card: otherHand.cards){
-            valueOtherHand += card.getValue();
-        }
-
-        return valueThisHand - valueOtherHand;
-    }
-
     public void sortBySuit(){
         Comparator<Card> comparator = Comparator.comparing(Card::getSuit).thenComparing(Card::getValue);
 
         Collections.sort(this.cards, comparator);
     }
+    private int sumOfValues() {
+        int sum = 0;
+ 
+        for (Card card : cards) {
+            sum += card.getValue();
+        }
+ 
+        return sum;
+    }
+ 
+    @Override
+    public int compareTo(Hand hand) {
+        return this.sumOfValues() - hand.sumOfValues();
+    }
+
+
 }
