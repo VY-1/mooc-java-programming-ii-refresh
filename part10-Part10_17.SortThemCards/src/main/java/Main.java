@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
@@ -49,5 +50,36 @@ public class Main {
         } else {
             System.out.println("hands are equal");
         }
+
+        System.out.println();
+
+        ArrayList<Card> cards = new ArrayList<>();
+
+        cards.add(new Card(3, Suit.SPADE));
+        cards.add(new Card(2, Suit.DIAMOND));
+        cards.add(new Card(14, Suit.SPADE));
+        cards.add(new Card(12, Suit.HEART));
+        cards.add(new Card(2, Suit.SPADE));
+
+        SortBySuit sortBySuitSorter = new SortBySuit();
+        Collections.sort(cards, sortBySuitSorter);
+
+        cards.stream().forEach(c -> System.out.println(c));
+
+        System.out.println();
+        Hand newHand = new Hand();
+
+        newHand.add(new Card(12, Suit.HEART));
+        newHand.add(new Card(4, Suit.SPADE));
+        newHand.add(new Card(2, Suit.DIAMOND));
+        newHand.add(new Card(14, Suit.SPADE));
+        newHand.add(new Card(7, Suit.HEART));
+        newHand.add(new Card(2, Suit.SPADE));
+
+        newHand.sortBySuit();
+
+        newHand.print();
+
     }
+
 }
